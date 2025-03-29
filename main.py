@@ -12,7 +12,7 @@ if __name__ == '__main__':
     
     ### 직접 구현한 DES ###
 
-    my_cipher = MyDES(debug_mode=debug_mode)
+    my_cipher = MyDES(debug_mode=debug_mode, key=0x133457799BBCDFF1)
 
     # 1. 원문(plaintext)
     plaintext:bytes = b"ABCDEFGH"
