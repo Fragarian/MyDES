@@ -96,5 +96,10 @@ class BaseMethods:
 
         # 3. INVERSE Initial Permutation
         val = PermutationMethods.initial_permutation(val, inverse=True)
+        if self.debug_mode:
+            print("-"*20)
+            print("After Inverse Initial Permutation")
+            print("-"*20)
+            print(f"Value: {val:016x}")
 
         return val.to_bytes(length=8, byteorder='big')
