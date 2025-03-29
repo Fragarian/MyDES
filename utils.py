@@ -9,3 +9,6 @@ def right_circular_shift(val: int, n: int, bit_size: int) -> int:
 def bit32_swap(val: int):
     return left_circular_shift(val, n=32, bit_size=64)
 
+def split_half(val:int, bit_size: int) -> tuple[int, int]:
+    assert bit_size % 2 == 0, "split_half requires even number for bit size." # bit size로는 홀수가 입력될 수 없음.
+    return val >> (bit_size//2), val & ((1 << (bit_size//2)) - 1)

@@ -13,6 +13,7 @@ if __name__ == '__main__':
     ### 직접 구현한 DES ###
 
     my_cipher = MyDES(debug_mode=debug_mode, key=0x133457799BBCDFF1)
+    temp_cipher = MyDES(debug_mode=False, key=0x133457799BBCDFF1)
 
     # 1. 원문(plaintext)
     plaintext:bytes = b"ABCDEFGH"
@@ -22,23 +23,23 @@ if __name__ == '__main__':
 
     # 2-1. 암호화를 100번 실행하고 시간을 timeit으로 측정
     run_count = 100
-    encryption_time = timeit.timeit(lambda: my_cipher.encrypt(plaintext, debug_mode=False), number=run_count)
+    encryption_time = timeit.timeit(lambda: temp_cipher.encrypt(plaintext), number=run_count)
 
     # 3. 복호화 -> 원문(plaintext) 이자 복호문(decrypted ciphertext)
     decrypted_ciphertext:bytes = my_cipher.decrypt(ciphertext)
 
     # 3-1. 복호화를 100번 실행하고 시간을 timeit으로 측정
     run_count = 100
-    decryption_time = timeit.timeit(lambda: my_cipher.decrypt(ciphertext, debug_mode=False), number=run_count)
+    decryption_time = timeit.timeit(lambda: temp_cipher.decrypt(ciphertext), number=run_count)
 
     # 4. 결과 출력
-    print("-"*40)
+    print("="*40)
     print("By custom implemented DES")
-    print("-" * 40)
-    print(f"Plaintext:\t\t\t\t{plaintext}")
-    print(f"Encrypted Ciphertext:\t\t{hex(int.from_bytes(ciphertext, byteorder='big'))}")
+    print("=" * 40)
+    print(f"Plaintext:\t\t\t\t\t{plaintext}")
+    print(f"Encrypted Ciphertext:\t\t{int.from_bytes(ciphertext, byteorder='big'):016x}")
     print(f"Execution Time (Encryption, 100 runs): {encryption_time}")
-    print(f"Decrypted Plaintext:\t\t\t\t{decrypted_ciphertext}")
+    print(f"Decrypted Plaintext:\t\t{decrypted_ciphertext}")
     print(f"Execution Time (Decryption, 100 runs): {decryption_time}")
 
 
@@ -74,11 +75,11 @@ if __name__ == '__main__':
 
 
     # 4. 결과 출력
-    print("-" * 40)
+    print("=" * 40)
     print("By reference library DES")
-    print("-" * 40)
-    print(f"Plaintext:\t\t\t\t{plaintext}")
-    print(f"Encrypted Ciphertext:\t\t{hex(int.from_bytes(ciphertext, byteorder='big'))}")
+    print("=" * 40)
+    print(f"Plaintext:\t\t\t\t\t{plaintext}")
+    print(f"Encrypted Ciphertext:\t\t{int.from_bytes(ciphertext, byteorder='big'):016x}")
     print(f"Execution Time (Encryption, 100 runs): {encryption_time}")
-    print(f"Decrypted Plaintext:\t\t\t\t{unpadded_ciphertext}")
+    print(f"Decrypted Plaintext:\t\t{unpadded_ciphertext}")
     print(f"Execution Time (Decryption, 100 runs): {decryption_time}")

@@ -9,13 +9,17 @@ class DES(BaseMethods, RoundMethods, KeyMethods):
     """
     def __init__(self,
                  key:Union[bytes, int],
-                 block_size:int=64,
-                 key_size:int=64,
                  debug_mode:bool=False,
                  ) -> None:
         self.key = key
-        self.block_size = block_size
-        self.key_size = key_size
         self.debug_mode = debug_mode
 
         self.keyring:tuple[int, ...] = self.generate_keyring()
+
+        if self.debug_mode:
+            print(f"Debug mode is activated!")
+            print("Keyring:")
+        for idx in range(0, 16, 4):
+            for subkey in self.keyring[idx:idx + 4]:
+                print(hex(subkey), end=' ')
+            print()
