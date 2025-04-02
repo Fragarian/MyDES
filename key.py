@@ -1,3 +1,7 @@
+"""
+키 스케줄링을 구현한 모듈.
+"""
+
 import typing
 from typing import Generator
 

@@ -1,3 +1,7 @@
+"""
+permutation 기능을 구현한 모듈.
+"""
+
 import typing
 from typing import Sequence
 
@@ -187,5 +191,4 @@ class PermutationMethods:
         return result
 
 
-print(PermutationMethods.s_box(0b011000, 7))
 

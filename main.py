@@ -1,3 +1,6 @@
+"""
+    암호화 모듈 호출과 결과 출력을 담당하는 코드.
+"""
 import timeit
 from Crypto.Cipher import DES
 from Crypto.Util.Padding import pad, unpad

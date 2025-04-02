@@ -1,3 +1,7 @@
+"""
+각 round의 동작을 구현한 모듈.
+"""
+
 import typing
 
 from permutation import PermutationMethods
